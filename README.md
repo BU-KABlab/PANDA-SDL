@@ -15,7 +15,7 @@ To electrodeposit polymer thin films, evaluate and compare their electrical prop
 ## Consumables
 * [PDMS Gasket](https://cad.onshape.com/documents/8f40aa9641f7f1039e816474/w/adf97a8228dac96fc46992ed/e/9cba4213e4509f8c1b8e8175)
 * [ITO-coated Glass Substrate]()
-* [Septum Vials](https://www.fishersci.com/shop/products/clear-voa-glass-vials-0-125in-septa/12-100-112)
+* [20 mL Stock Vials](https://www.fishersci.com/shop/products/clear-voa-glass-vials-0-125in-septa/12-100-112)
 * [200 µl Pipette tips]()
   
 ## Designs

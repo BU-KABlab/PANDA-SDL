@@ -1,5 +1,5 @@
 # PANDA-SDL
-Polymer analysis and discovery array (PANDA) self-driving lab (SDL) an automated system for high-throughput electrodeposition and functional characterization of polymer films
+Polymer analysis and discovery array (PANDA) self-driving lab (SDL): an automated system for high-throughput electrodeposition and functional characterization of polymer films
 
 ![PANDA-logo](https://github.com/BU-KABlab/PANDA-SDL/blob/2c1d91d546d233a9af88f7912e32f243253305e5/PANDAlogo.png)
 ## Purpose

@@ -11,6 +11,7 @@ To electrodeposit polymer thin films, evaluate and compare their electrical prop
 * [Gamry Potentiostat Interface 1010E](https://www.gamry.com/potentiostats/interface-1010e-potentiostat/)
 * [FLIR grasshopper3 USB](https://www.flir.com/products/grasshopper3-usb3/)
 * [Edmunds Optics 55mm Focal Length Partially Telecentric Video Lens](https://www.edmundoptics.com/p/55mm-focal-length-partially-telecentric-video-lens/10573/)
+* [Electroluminescent Panel](https://www.technolight.com/product/4-x-6-inch-uv-fade-resistant-white-rectangle-electroluminescent-el-light-panel/)
 
 ## Consumables
 * [PDMS Gasket](https://cad.onshape.com/documents/8f40aa9641f7f1039e816474/w/adf97a8228dac96fc46992ed/e/9cba4213e4509f8c1b8e8175)

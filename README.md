@@ -25,14 +25,18 @@ To electrodeposit polymer thin films, evaluate and compare their electrical prop
 * [Substrate Holder](https://cad.onshape.com/documents/ccde1516ba2f6a9f288ba4a5/w/6078df451920f962c99dc5d0/e/e23eb57422b3a293c7468839)
 * [Vial tube rack](https://github.com/erasmus95/PANDA-BEAR/blob/main/3d-prints/TubeRack_2mLx10_v1_scaled.stl)
 
-# Other Tools and Dependencies
-* Python 3
-* Anaconda
+## Software
+* [Python 3](https://www.python.org/)
+* [Anaconda](https://www.anaconda.com/)
 * [Slack SDK](https://slack.dev/python-slack-sdk/)
 * [Windows driver for serial cable communication](https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip)
+* [FlyCapture SDK](https://www.flir.com/products/flycapture-sdk/)
 
 
 ## Team
-* Dr. Keith Brown
 * Harley Quinn
 * Gregory Robben
+* Zhaoyi Zhang
+* Alan Gardner
+* Dr. Jörg G. Werner
+* Dr. Keith Brown

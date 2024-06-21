@@ -55,22 +55,6 @@ CREATE TABLE IF NOT EXISTS generators (
     filepath    TEXT
 );
 
-INSERT INTO generators (
-                           id,
-                           project_id,
-                           protocol_id,
-                           name,
-                           filepath
-                       )
-                       VALUES (
-                           1,
-                           '',
-                           '',
-                           'exp_a_ferrocyanide_generator',
-                           'exp_a_ferrocyanide_generator.py'
-                       );
-
-
 -- Table: ml_pedot_best_test_points
 CREATE TABLE IF NOT EXISTS ml_pedot_best_test_points (
     model_id                 INT             NOT NULL

@@ -10,7 +10,7 @@ import os
 import sys
 import time
 from pathlib import Path
-import dotenv
+from dotenv import load_dotenv
 from PIL import Image
 
 from panda_lib.config.config_tools import read_testing_config, write_testing_config
@@ -37,7 +37,7 @@ from panda_lib.sql_tools import (
 )
 from panda_lib.analyzer.pedot import sql_ml_functions
 
-dotenv.load_dotenv()
+load_dotenv()
 
 def run_epanda_with_ml():
     """Runs ePANDA."""
@@ -658,11 +658,7 @@ of promoting the sharing and reuse of software generally.
 def print_env_variables():
     """Prints the dot environment variables."""
     # Get the environment variables
-    print("Environment Variables:")
-    dotenv_path = Path(__file__).parent / '.env'
-    dotenv.load_dotenv(dotenv_path)
-    for key, value in os.environ.items():
-        print(f"{key}: {value}")
+    pass
     
 
 menu_options = {

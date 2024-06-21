@@ -40,8 +40,8 @@ from .log_tools import e_panda_logger as logger
 from .mill_control import Mill, MockMill
 from .obs_controls import MockOBSController, OBSController
 from .syringepump import MockPump, SyringePump
-from .sartorius_local import Scale
-from .sartorius_local.mock import Scale as MockScale
+from .sartorius.sartorius import Scale
+from .sartorius.sartorius.mock import Scale as MockScale
 from .scheduler import Scheduler
 from .slack_tools.SlackBot import SlackBot
 from .sql_tools import sql_protocol_utilities, sql_system_state, sql_wellplate

@@ -15,8 +15,8 @@ from panda_lib.experiment_class import ExperimentResult
 from panda_lib.mill_control import Mill, MockMill
 from panda_lib.nesp_lib_py.nesp_lib.mock import Pump as MockNespLibPump
 from panda_lib.pipette import Pipette
-from panda_lib.sartorious.sartorius.driver import Scale
-from panda_lib.sartorious.sartorius.mock import Scale as MockScale
+from panda_lib.sartorius.sartorius.driver import Scale
+from panda_lib.sartorius.sartorius.mock import Scale as MockScale
 from panda_lib.utilities import Coordinates, Instruments
 from panda_lib.vessel import VesselLogger
 import panda_lib.wellplate as wp

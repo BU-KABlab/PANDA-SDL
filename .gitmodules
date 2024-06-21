@@ -1,6 +1,6 @@
 [submodule "panda_lib/nesp_lib_py"]
 	path = panda_lib/nesp_lib_py
 	url = https://github.com/BU-KABlab/nesp-lib-py
-[submodule "panda_lib/sartorious"]
-	path = panda_lib/sartorious
+[submodule "panda_lib/sartorius"]
+	path = panda_lib/sartorius
 	url = https://github.com/BU-KABlab/sartorius

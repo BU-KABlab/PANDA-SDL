@@ -31,6 +31,7 @@ To electrodeposit polymer thin films, evaluate and compare their electrical prop
 * [Slack SDK](https://slack.dev/python-slack-sdk/)
 * [Silicon Labs CP210x_Universal_Windows_Driver](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads)
 * [FlyCapture SDK](https://www.flir.com/products/flycapture-sdk/)
+* [Open Broadcast Software](https://obsproject.com/)
 
 
 ## Team

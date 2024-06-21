@@ -6,3 +6,5 @@ data/
 *.pyc
 *slack_credentials.py
 *secrets*
+.vscode
+

@@ -1,0 +1,8 @@
+#Untracked directories
+logs/
+data/
+
+#Untracked files
+*.pyc
+*slack_credentials.py
+*secrets*

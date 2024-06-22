@@ -6,7 +6,7 @@ Copyright (C) 2019 NuMat Technologies
 """
 from typing import Any
 
-from sartorius.driver import Scale
+from .driver import Scale
 
 
 def command_line(args: Any = None) -> None:

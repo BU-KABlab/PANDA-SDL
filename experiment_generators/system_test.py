@@ -33,7 +33,7 @@ def main():
         experiments.append(
             experiment_class.EdotExperiment(
                 experiment_id=experiment_id,
-                protocol_id=13,
+                protocol_id="system_test",
                 well_id='A1',
                 well_type_number=4,
                 experiment_name=EXPERIMENT_NAME,

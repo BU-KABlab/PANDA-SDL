@@ -14,3 +14,4 @@ data/
 .ipynb_checkpoints
 *.egg-info
 *.log
+test_db.db

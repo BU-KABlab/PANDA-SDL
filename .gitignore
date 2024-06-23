@@ -7,4 +7,10 @@ data/
 *slack_credentials.py
 *secrets*
 .vscode
-
+*.pyc
+*__pycache__
+*.DS_store
+*.swp
+.ipynb_checkpoints
+*.egg-info
+*.log

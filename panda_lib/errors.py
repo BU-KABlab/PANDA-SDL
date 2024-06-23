@@ -1,9 +1,13 @@
 """Possible errors for the epanda system."""
+
+
 class ProtocolNotFoundError(Exception):
     """Error raised when a protocol is not found in the database."""
+
     def __init__(self, message="Protocol not found in the database"):
         self.message = message
         super().__init__(self.message)
+
 
 class WellImportError(Exception):
     """Raised when the wellplate status file does not have the correct number of wells"""
@@ -22,12 +26,14 @@ class ShutDownCommand(Exception):
         self.message = message
         super().__init__(self.message)
 
+
 class NoExperimentFromModel(Exception):
     """Raised when the ML model does not generate a new experiment"""
 
     def __init__(self, message="The ML model did not generate a new experiment"):
         self.message = message
         super().__init__(self.message)
+
 
 class OCPFailure(Exception):
     """Raised when OCP fails"""
@@ -99,7 +105,7 @@ class OverFillException(Exception):
         self.capacity = capacity
 
     def __str__(self) -> str:
-        return f"OverFillException: {self.name} has {self.volume} + {self.added_volume} > {self.capacity}"
+        return f"{self.name}: {self.volume} + {self.added_volume} > {self.capacity}"
 
 
 class OverDraftException(Exception):

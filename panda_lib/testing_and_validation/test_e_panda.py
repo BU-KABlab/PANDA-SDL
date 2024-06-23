@@ -1,21 +1,17 @@
 import unittest
 from unittest.mock import MagicMock
-from e_panda import (
-    forward_pipette_v2,
-    solution_selector,
-    waste_selector,
-    NoAvailableSolution,
-    flush_v2,
-    rinse_v2,
-    chrono_amp
-)
-from vials import Vessel, StockVial, WasteVial
+
+from experiment_class import EchemExperimentBase, PEG_ACR_Instructions
 from mill_control import MockMill
-from pump_control import MockPump
-from gamry_control_WIP_mock import GamryPotentiostat
+from syringepump import MockPump
+from vials import StockVial, Vessel, WasteVial
 from wellplate import Well, Wellplate
-from sartorius.mock import Scale as MockScale
-from experiment_class import PEG_ACR_Instructions, EchemExperimentBase
+
+from panda_lib.actions import (NoAvailableSolution, chrono_amp, flush_v2,
+                               forward_pipette_v2, rinse_v2, solution_selector,
+                               waste_selector)
+from panda_lib.gamry_control_mock import GamryPotentiostat
+from sartorius.sartorius.mock import Scale as MockScale
 
 # pylint: disable=line-too-long, too-many-arguments, too-many-lines
 

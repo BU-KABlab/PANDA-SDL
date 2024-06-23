@@ -3,9 +3,10 @@ Vessel module.
 """
 
 import logging
-from typing import Union, Optional
+from typing import Optional, Union
+
 from .config.config import PATH_TO_LOGS
-from .errors import OverFillException, OverDraftException
+from .errors import OverDraftException, OverFillException
 
 
 class VesselLogger:
@@ -26,6 +27,7 @@ class VesselLogger:
 
 # Create an instance of the logger for the vessel module
 logger = VesselLogger("vessel").logger
+
 
 class VesselCoordinates:
     """
@@ -180,7 +182,7 @@ class Vessel:
 
     def update_volume(self, added_volume: float) -> None:
         """Updates the volume of the vessel by adding the specified volume."""
-        added_volume = round(added_volume,6)
+        added_volume = round(added_volume, 6)
         if self.volume + added_volume > self.capacity:
             raise OverFillException(self.name, self.volume, added_volume, self.capacity)
         if self.volume + added_volume < float(0):
@@ -200,7 +202,6 @@ class Vessel:
     def calculate_depth(self) -> float:
         """Calculates the current depth of the solution in the vessel."""
         # Different vessels will have different implementations of this method
-        pass
 
     def check_volume(self, volume_to_add: float) -> bool:
         """
@@ -228,7 +229,6 @@ class Vessel:
         Writes the current volume of the vessel to the appropriate file.
         """
         # Different vessels will have different implementations of this method
-        pass
 
     def update_contamination(self, new_contamination: int = None) -> None:
         """
@@ -238,9 +238,8 @@ class Vessel:
         -----------
         new_contamination (int, optional): The new contamination count of the vessel.
         """
-        # Different vessels will have different implementations of this method due to 
+        # Different vessels will have different implementations of this method due to
         # the different ways they save to the db
-        pass
 
     def update_contents(self, from_vessel: str, volume: float) -> None:
         """
@@ -252,7 +251,6 @@ class Vessel:
         volume (float): The volume of the solution to be added to the vessel.
         """
         # Different vessels will have different implementations of this method
-        pass
 
     def get_contents(self) -> dict:
         """

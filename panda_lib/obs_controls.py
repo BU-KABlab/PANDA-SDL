@@ -5,11 +5,13 @@ It is used to place the experiment information on the screen and to turn on and 
 
 # pylint: disable=unnecessary-pass
 import logging
+import os
 from dataclasses import dataclass
 from pathlib import Path
+
 import obsws_python as obsws
 from obsws_python import error as OBSerror
-import os
+
 from .config.config import PATH_TO_LOGS, read_testing_config
 from .log_tools import e_panda_logger as logger
 
@@ -22,6 +24,7 @@ file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 # logger.addHandler(system_handler)
 
+
 @dataclass
 class OBSSecrets:
     """This class is used to store the OBS secrets"""
@@ -30,6 +33,7 @@ class OBSSecrets:
     PASSWORD = os.environ.get("OBS_PASSWORD")
     PORT = int(os.environ.get("OBS_PORT"))
     TIMEOUT = int(os.environ.get("OBS_TIMEOUT"))
+
 
 class OBSController:
     """This class is used simplify the control the OBS software for our needs"""
@@ -180,6 +184,7 @@ Well: {well_id}"""
             return None
 
     def change_image(self, new_image_path, source_name: str = "image"):
+        """Change the image on the screen"""
         try:
             self.client.get_input_settings(source_name)
             self.client.set_input_settings(
@@ -236,9 +241,9 @@ class MockOBSController:
         pass
 
     def change_image(self, new_image_path, source_name: str = "image"):
+        """Change the image on the screen"""
         pass
 
     def disconnect_from_obs(self):
         """Disconnect from OBS"""
         pass
-

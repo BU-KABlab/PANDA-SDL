@@ -13,13 +13,15 @@ The module relies on other modules such as:
     - `wellplate`
     - `config`
 """
-#pylint: disable=unused-argument
+
+# pylint: disable=unused-argument
 import json
 import os
 import platform
 from typing import Sequence
 
 from panda_lib.experiment_class import ExperimentResultsRecord, insert_experiment_result
+from panda_lib.vials import read_vials
 
 from .actions import capture_new_image, image_filepath_generator
 from .mill_control import Mill, MockMill
@@ -422,7 +424,6 @@ def capture_well_photo_manually(mill: Mill, wellplate: Wellplate, *args, **kwarg
             return  # exit the loop
 
 
-
 def home_mill(mill: Mill, *args, **kwargs):
     """Homes the mill"""
     mill.home()
@@ -433,6 +434,7 @@ def quit_calibration():
     """Quit the calibration menu"""
     print("Quitting calibration menu")
     return
+
 
 menu_options = {
     "0": check_mill_settings,
@@ -476,7 +478,7 @@ def main():
         testing = True
     else:
         testing = False
-    from panda_lib.vials import read_vials
+
     print("Testing mode:", testing)
     input("Press enter to continue")
     # Create the mill object

@@ -186,7 +186,7 @@ class Vial2(Vessel):
         self.insert_updated_vial_in_db()
         return self
 
-    def write_volume_to_disk(self) -> None:  # TODO replace with using the db
+    def write_volume_to_disk(self) -> None:
         """
         Writes the current volume and contamination of the vial to the appropriate file.
         """

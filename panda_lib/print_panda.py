@@ -1,4 +1,6 @@
 """Prints the ePANDA panda."""
+
+# pylint: disable=line-too-long, trailing-whitespace
 # def print_panda():
 #     """Prints the ePANDA panda."""
 #     image = r"""

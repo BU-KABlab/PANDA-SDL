@@ -13,8 +13,10 @@ from typing import List, Optional, Tuple, Union, get_type_hints
 from pydantic import ConfigDict, RootModel
 from pydantic.dataclasses import dataclass
 
-from panda_lib.sql_tools.sql_utilities import (execute_sql_command,
-                                                execute_sql_command_no_return)
+from panda_lib.sql_tools.sql_utilities import (
+    execute_sql_command,
+    execute_sql_command_no_return,
+)
 
 
 class ExperimentResultsRecord:
@@ -264,7 +266,7 @@ class ExperimentBase:
 
     experiment_id: int = None
     experiment_name: str = None
-    protocol_id: Union[int,str] = None
+    protocol_id: Union[int, str] = None
     priority: Optional[int] = 0
     well_id: Optional[str] = None
     pin: Union[str, int] = None
@@ -298,7 +300,8 @@ class ExperimentBase:
     process_type: Optional[int] = 1
     jira_issue_key: Optional[str] = None
     experiment_type: int = 0
-    well: object= None
+    well: object = None
+
     # FIXME: Seperate the set status, and set status and save methods from the experimentbase. The experiment base should just be a dataclass
     # What could be an alternative is that there is a wrapper class that has the set status and set status and save methods using what
     # Method that the project chooses to use to save the data to the database
@@ -307,11 +310,13 @@ class ExperimentBase:
         self.status = new_status
         self.status_date = datetime.now().isoformat(timespec="seconds")
         try:
-            if os.environ["PANDA_SDL_TESTING"] == '1' or os.environ["PANDA_SDL_USE_OBS"] == '0':
+            if (
+                os.environ["PANDA_SDL_TESTING"] == "1"
+                or os.environ["PANDA_SDL_USE_OBS"] == "0"
+            ):
                 from .obs_controls import MockOBSController as OBSController
             else:
                 from .obs_controls import OBSController
-
 
             OBSController().place_experiment_on_screen(self)
         except Exception as e:
@@ -337,7 +342,10 @@ class ExperimentBase:
         # Save the experiment to the database
         update_experiment(self)
         try:
-            if os.environ["PANDA_SDL_TESTING"] == '1' or os.environ["PANDA_SDL_USE_OBS"] == '0':
+            if (
+                os.environ["PANDA_SDL_TESTING"] == "1"
+                or os.environ["PANDA_SDL_USE_OBS"] == "0"
+            ):
                 from .obs_controls import MockOBSController as OBSController
             else:
                 from .obs_controls import OBSController
@@ -523,8 +531,12 @@ class EchemExperimentBase(ExperimentBase):
     ca_sample_period: Decimal = Decimal(0.1)  # Deposition sample period
     ca_prestep_voltage: Decimal = Decimal(0.0)  # Pre-step voltage (V)
     ca_prestep_time_delay: Decimal = Decimal(0.0)  # Pre-step delay time (s)
-    ca_step_1_voltage: Decimal = Decimal(-1.7)  # Step 1 voltage (V), deposition potential (V)
-    ca_step_1_time: Decimal = Decimal(300.0)  # run time 300 seconds, deposition duration (s)
+    ca_step_1_voltage: Decimal = Decimal(
+        -1.7
+    )  # Step 1 voltage (V), deposition potential (V)
+    ca_step_1_time: Decimal = Decimal(
+        300.0
+    )  # run time 300 seconds, deposition duration (s)
     ca_step_2_voltage: Decimal = Decimal(0.0)  # Step 2 voltage (V)
     ca_step_2_time: Decimal = Decimal(0.0)  # Step 2 time (s)
     ca_sample_rate: Decimal = Decimal(0.5)  # sample period (s)
@@ -630,6 +642,7 @@ class EdotExperiment(EchemExperimentBase):
     experiment_type: int = 2  # edot
     edot_concentration: Decimal = Decimal(0.1)  # mM
 
+
 @dataclass(config=ConfigDict(validate_assignment=True, arbitrary_types_allowed=True))
 class FeCnVerificaitonExperiments(EchemExperimentBase):
     """Define the default data that is used to run an FeCn experiment"""
@@ -637,13 +650,14 @@ class FeCnVerificaitonExperiments(EchemExperimentBase):
     project_id: int = 17
     well_type_number: int = 4  # ito
 
+
 experiment_types_by_project_id = {
     0: ExperimentBase,
     1: EchemExperimentBase,
     16: EdotExperiment,
     11: CorrectionFactorExperiment,
     17: FeCnVerificaitonExperiments,
-    999: EdotExperiment
+    999: EdotExperiment,
 }
 
 
@@ -671,7 +685,7 @@ def make_test_value() -> ExperimentBase:
         experiment_name="test",
         priority=2,
         well_id="D5",
-        pin='0',
+        pin="0",
         project_id=3,
         solutions={"dmf": 0, "peg": 145, "acrylate": 145, "ferrocene": 0, "custom": 0},
         status=ExperimentStatus.QUEUED,
@@ -734,8 +748,6 @@ def get_all_type_hints(cls):
     for base in reversed(cls.__mro__):
         hints.update(get_type_hints(base))
     return hints
-
-
 
 
 # region Experiment SQL Functions
@@ -862,6 +874,7 @@ def select_experiment_paramaters(
     experiment_object.map_parameter_list_to_experiment(values)
     return experiment_object
 
+
 def select_specific_parameter(experiment_id: int, parameter_name: str):
     """
     Select a specific parameter from the experiment_parameters table.
@@ -885,6 +898,7 @@ def select_specific_parameter(experiment_id: int, parameter_name: str):
         return None
     return result[0][0]
 
+
 def select_experiment_status(experiment_id: int) -> str:
     """
     Select the status of an experiment from the well_hx table.
@@ -905,6 +919,7 @@ def select_experiment_status(experiment_id: int) -> str:
     if result == []:
         return ValueError("No experiment found with that ID")
     return result[0][0]
+
 
 def insert_experiment(experiment: ExperimentBase) -> None:
     """
@@ -992,7 +1007,9 @@ def insert_experiments_parameters(experiments: List[ExperimentBase]) -> None:
     Args:
         experiments (List[ExperimentBase]): The experiments to insert.
     """
-    parameters_to_insert = [] # this will be a list of tuples of the parameters to insert
+    parameters_to_insert = (
+        []
+    )  # this will be a list of tuples of the parameters to insert
     for experiment in experiments:
         experiment_parameters: list[ExperimentParameterRecord] = (
             experiment.generate_parameter_list()
@@ -1193,6 +1210,7 @@ def update_experiments_statuses(
 
 # region Result Functions
 
+
 def insert_experiment_result(entry: ExperimentResultsRecord) -> None:
     """
     Insert an entry into the result table.
@@ -1213,8 +1231,14 @@ def insert_experiment_result(entry: ExperimentResultsRecord) -> None:
         entry.result_value = json.dumps(entry.result_value)
     if isinstance(entry.result_value, Path):
         entry.result_value = str(entry.result_value)
-    parameters = (entry.experiment_id, entry.result_type, entry.result_value, entry.context)
+    parameters = (
+        entry.experiment_id,
+        entry.result_type,
+        entry.result_value,
+        entry.context,
+    )
     execute_sql_command_no_return(command, parameters)
+
 
 def insert_experiment_results(entries: List[ExperimentResultsRecord]) -> None:
     """
@@ -1296,11 +1320,11 @@ def select_specific_result(
         )
     if result == []:
         return None
-    
+
     results = []
     for row in result:
         results.append(ExperimentResultsRecord(*row))
-    
+
     if len(results) == 1:
         return results[0]
 
@@ -1309,7 +1333,9 @@ def select_specific_result(
 
 # endregion
 
+
 def decimal_default(obj):
+    """Convert a decimal object to a float"""
     if isinstance(obj, Decimal):
         return float(obj)
     raise TypeError

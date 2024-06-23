@@ -1,4 +1,7 @@
 """a virtual pstat for testing main code logic"""
+
+# pylint: disable=too-many-arguments, unused-argument, missing-function-docstring, invalid-name
+
 import logging
 import pathlib
 from typing import Tuple
@@ -6,14 +9,19 @@ from pydantic.dataclasses import dataclass
 from pydantic import ConfigDict
 import numpy as np
 from .config.config import PATH_TO_DATA
+
 logger = logging.getLogger("e_panda")
 
+COMPLETE_FILE_NAME = None
+
 class GamryPotentiostat:
+    """A virtual potentiostat for testing main code logic"""
+
     def __init__(self):
         self.OPEN_CONNECTION = False
 
-
     def pstatconnect(self):
+        """connect to the potentiostat"""
         self.OPEN_CONNECTION = True
 
     def connect(self):
@@ -27,7 +35,6 @@ class GamryPotentiostat:
 
     def OCP(self, OCPvi, OCPti, OCPrate):
         self.OPEN_CONNECTION = True
-        pass
 
     def activecheck(self):
         return self.OPEN_CONNECTION
@@ -36,35 +43,44 @@ class GamryPotentiostat:
         self.OPEN_CONNECTION = True
         return True, 0.0
 
-    def setfilename(self,
+    def setfilename(
+        self,
         experiment_id,
         experiment_type,
         project_campaign_id: int = None,
         campaign_id: int = None,
         well_id: str = None,
-        ) -> pathlib.Path:
+    ) -> pathlib.Path:
         """set the file name for the experiment"""
         global COMPLETE_FILE_NAME
         if project_campaign_id is None and campaign_id is None and well_id is None:
             file_name = f"{experiment_id}_{experiment_type}"
             file_name = file_name.replace(" ", "_")
             file_name_start = file_name + "_0"
-            filepath: pathlib.Path = (PATH_TO_DATA / file_name_start).with_suffix(".txt")
+            filepath: pathlib.Path = (PATH_TO_DATA / file_name_start).with_suffix(
+                ".txt"
+            )
             i = 1
             while filepath.exists():
                 next_file_name = f"{file_name}_{i}"
-                filepath = pathlib.Path(PATH_TO_DATA / str(next_file_name)).with_suffix(".txt")
+                filepath = pathlib.Path(PATH_TO_DATA / str(next_file_name)).with_suffix(
+                    ".txt"
+                )
                 i += 1
         else:
             file_name = f"{project_campaign_id}_{campaign_id}_{experiment_id}_{well_id}_{experiment_type}"
             file_name = file_name.replace(" ", "_")
             file_name_start = file_name + "_0"
-            filepath: pathlib.Path = (PATH_TO_DATA / file_name_start).with_suffix(".txt")
-            # Check if the file already exists. If it does then add a number to the end of the file name
+            filepath: pathlib.Path = (PATH_TO_DATA / file_name_start).with_suffix(
+                ".txt"
+            )
+            # Check if the file already exists. If so increment the file name
             i = 1
             while filepath.exists():
                 next_file_name = f"{file_name}_{i}"
-                filepath = pathlib.Path(PATH_TO_DATA / str(next_file_name)).with_suffix(".txt")
+                filepath = pathlib.Path(PATH_TO_DATA / str(next_file_name)).with_suffix(
+                    ".txt"
+                )
                 i += 1
 
         COMPLETE_FILE_NAME = filepath
@@ -74,12 +90,14 @@ class GamryPotentiostat:
     def chrono(self, CAvi, CAti, CAv1, CAt1, CAv2, CAt2, CAsamplerate):
         pass
 
-    def cyclic(self, CVvi, CVap1, CVap2, CVvf, CVsr1, CVsr2, CVsr3, CVsamplerate, CVcycle):
+    def cyclic(
+        self, CVvi, CVap1, CVap2, CVvf, CVsr1, CVsr2, CVsr3, CVsamplerate, CVcycle
+    ):
         pass
 
     def save_data(self, complete_file_name):
         np.savetxt(complete_file_name, np.array([[1, 2], [3, 4]]), delimiter=",")
-    
+
     def __enter__(self):
         self.connect()
         return self
@@ -87,14 +105,15 @@ class GamryPotentiostat:
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.disconnect()
 
+
 @dataclass(config=ConfigDict(validate_assignment=True))
 class potentiostat_cv_parameters:
     """CV Setup Parameters"""
 
     # CV Setup Parameters
     CVvi: float = 0.0  # initial voltage
-    CVap1: float = 0.5 
-    CVap2: float = -0.2 
+    CVap1: float = 0.5
+    CVap2: float = -0.2
     CVvf: float = 0.0  # final voltage
     CVstep: float = 0.01
     CVsr1: float = 0.1

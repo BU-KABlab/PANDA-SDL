@@ -2,7 +2,7 @@
 Responsible for calling the appropirate interfaces to perform a given experiment.
 """
 
-# pylint: disable=line-too-long, too-many-arguments, too-many-lines, broad-exception-caught
+# pylint: disable=line-too-long, too-many-arguments, too-many-lines, broad-exception-caught, bare-except
 
 # Standard library imports
 import logging
@@ -49,15 +49,15 @@ from panda_lib.wellplate import Well
 TESTING = read_testing_config()
 
 if TESTING:
-    from panda_lib.gamry_control_WIP_mock import GamryPotentiostat as echem
-    from panda_lib.gamry_control_WIP_mock import (
+    from panda_lib.gamry_control_mock import GamryPotentiostat as echem
+    from panda_lib.gamry_control_mock import (
         potentiostat_chrono_parameters,
         potentiostat_cv_parameters,
         potentiostat_ocp_parameters,
     )
 else:
-    import panda_lib.gamry_control_WIP as echem
-    from panda_lib.gamry_control_WIP import (
+    import panda_lib.gamry_control as echem
+    from panda_lib.gamry_control import (
         potentiostat_chrono_parameters,
         potentiostat_cv_parameters,
         potentiostat_ocp_parameters,

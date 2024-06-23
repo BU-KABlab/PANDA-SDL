@@ -20,16 +20,17 @@ from .config.config import PATH_TO_DATA
 ## set up logging to log to both the pump_control.log file and the ePANDA.log file
 logger = logging.getLogger("e_panda")
 # global variables
-global PSTAT
-global DEVICES
-global GAMRY_COM
-global DTAQ
-global SIGNAL
-global DTAQ_SINK
-global CONNECTION
-global ACTIVE
-global COMPLETE_FILE_NAME
-global OPEN_CONNECTION
+PSTAT = None
+DEVICES = None
+GAMRY_COM = None
+DTAQ = None
+SIGNAL = None
+DTAQ_SINK = None
+CONNECTION = None
+ACTIVE = None
+COMPLETE_FILE_NAME = None
+OPEN_CONNECTION = None
+ACTIVE = False
 
 
 def pstatconnect():
@@ -54,8 +55,6 @@ def pstatconnect():
 
 class GamryCOMError(Exception):
     """Exception raised when a COM error occurs."""
-
-    pass
 
 
 def gamry_error_decoder(err):
@@ -82,8 +81,6 @@ def initializepstat():
 def stopacq():
     """stop the acquisition"""
     global ACTIVE
-    global PSTAT
-    global GAMRY_COM
     ACTIVE = False
     PSTAT.SetCell(GAMRY_COM.CellOff)
     time.sleep(1)
@@ -133,9 +130,7 @@ class GamryDtaqEvents(object):
 
 def pstatdisconnect():
     """disconnect the pstat"""
-    global PSTAT
     global OPEN_CONNECTION
-    """disconnect the pstat"""
     logger.debug("disconnecting pstat")
     PSTAT.Close()
     OPEN_CONNECTION = False
@@ -196,7 +191,6 @@ def cyclic(CVvi, CVap1, CVap2, CVvf, CVsr1, CVsr2, CVsr3, CVsamplerate, CVcycle)
     global SIGNAL
     global DTAQ_SINK
     global CONNECTION
-    global GAMRY_COM
     global ACTIVE
     # global complete_file_name
 
@@ -236,11 +230,21 @@ def cyclic(CVvi, CVap1, CVap2, CVvf, CVsr1, CVsr2, CVsr3, CVsamplerate, CVcycle)
 
 
 def chrono(CAvi, CAti, CAv1, CAt1, CAv2, CAt2, CAsamplerate):
+    """chronoamperometry
+    
+    Args:
+        CAvi (float): Pre-step voltage (V)
+        CAti (float): Pre-step delay time (s)
+        CAv1 (float): Step 1 voltage (V)
+        CAt1 (float): run time 300 seconds
+        CAv2 (float): Step 2 voltage (V)
+        CAt2 (float): Step 2 time (s)
+        CAsamplerate (float): sample period (s)
+    """
     global DTAQ
     global SIGNAL
     global DTAQ_SINK
     global CONNECTION
-    global GAMRY_COM
     global ACTIVE
     # global complete_file_name
 
@@ -271,15 +275,12 @@ def chrono(CAvi, CAti, CAv1, CAt1, CAv2, CAt2, CAsamplerate):
 
 
 def OCP(OCPvi, OCPti, OCPrate):
+    """open circuit potential"""
     global DTAQ
     global SIGNAL
     global DTAQ_SINK
     global CONNECTION
     global ACTIVE
-    global GAMRY_COM
-    global PSTAT
-    global COMPLETE_FILE_NAME
-
     ACTIVE = True
 
     logger.debug("ocp: made it to run")
@@ -304,12 +305,14 @@ def OCP(OCPvi, OCPti, OCPrate):
 
 
 def activecheck():
+    """check if the experiment is active"""
     while ACTIVE is True:
         client.PumpEvents(1)
         time.sleep(0.5)
 
 
 def check_vf_range(filename) -> Tuple[bool, float]:
+    """Check the Vf value in the file to determine if the experiment was successful."""
     try:
         ocp_data = pd.read_csv(
             filename,
@@ -334,11 +337,11 @@ def check_vf_range(filename) -> Tuple[bool, float]:
 
 
 def mock_CA(MCAvi, MCAti, MCArate):
+    """mock chronoamperometry"""
     global DTAQ
     global SIGNAL
     global DTAQ_SINK
     global CONNECTION
-    global GAMRY_COM
     global ACTIVE
     ACTIVE = True
 
@@ -449,4 +452,4 @@ if __name__ == "__main__":
         del CONNECTION
 
     except Exception as e:
-        raise gamry_error_decoder(e)
+        raise gamry_error_decoder(e) from e

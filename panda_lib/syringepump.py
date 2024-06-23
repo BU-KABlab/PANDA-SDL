@@ -7,20 +7,19 @@ import logging
 import time
 from typing import Optional, Union
 
-
-from panda_lib.nesp_lib_py import nesp_lib
+import panda_lib.wellplate as wp
+from nesp_lib_py import nesp_lib
+from nesp_lib_py.nesp_lib.mock import Pump as MockNespLibPump
 from panda_lib.config.config import PATH_TO_LOGS
 from panda_lib.correction_factors import reverse_correction_factor
 from panda_lib.experiment_class import ExperimentResult
 from panda_lib.mill_control import Mill, MockMill
-from panda_lib.nesp_lib_py.nesp_lib.mock import Pump as MockNespLibPump
 from panda_lib.pipette import Pipette
-from panda_lib.sartorius.sartorius.driver import Scale
-from panda_lib.sartorius.sartorius.mock import Scale as MockScale
 from panda_lib.utilities import Coordinates, Instruments
 from panda_lib.vessel import VesselLogger
-import panda_lib.wellplate as wp
 from panda_lib.vials import StockVial, Vial2, WasteVial
+from sartorius.sartorius.driver import Scale
+from sartorius.sartorius.mock import Scale as MockScale
 
 pump_control_logger = logging.getLogger("e_panda")
 if not pump_control_logger.hasHandlers():

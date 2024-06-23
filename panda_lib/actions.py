@@ -1,22 +1,5 @@
 """
 Responsible for calling the appropirate interfaces to perform a given experiment.
-
-Args:
-    Expriment instructions : Experiment
-        All parameters to run the experiment
-    Mill: Mill object
-    Pump: Pump object
-    Potentiostat: Potentiostat object
-    Camera: Camera object
-    OBS: OBS object
-    Wellplate: Wellplate object
-    Vials: Vials object
-    Scale: Scale object
-
-Returns:
-    ExperimentResult: The results of the experiment.
-    Wellplate: The updated wellplate object.
-    Vials: The updated vials object.
 """
 
 # pylint: disable=line-too-long, too-many-arguments, too-many-lines, broad-exception-caught

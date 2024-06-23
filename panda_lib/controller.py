@@ -26,11 +26,14 @@ from slack_sdk.errors import (BotUserAccessError, SlackApiError,
                               SlackObjectFormationError, SlackRequestError,
                               SlackTokenRotationError)
 
+from sartorius.sartorius import Scale
+from sartorius.sartorius.mock import Scale as MockScale
+
 from . import actions
+from .actions import CAFailure, CVFailure, DepositionFailure, OCPFailure
 from .analyzer.pedot import pedot_analyzer
 from .analyzer.pedot import run_ml_model as pedot_ml_model
 from .config.config import RANDOM_FLAG, read_testing_config
-from .actions import CAFailure, CVFailure, DepositionFailure, OCPFailure
 from .errors import (NoExperimentFromModel, ProtocolNotFoundError,
                      ShutDownCommand, WellImportError)
 from .experiment_class import (ExperimentBase, ExperimentResult,
@@ -39,15 +42,13 @@ from .instrument_toolkit import Toolkit
 from .log_tools import e_panda_logger as logger
 from .mill_control import Mill, MockMill
 from .obs_controls import MockOBSController, OBSController
-from .syringepump import MockPump, SyringePump
-from .sartorius.sartorius import Scale
-from .sartorius.sartorius.mock import Scale as MockScale
 from .scheduler import Scheduler
 from .slack_tools.SlackBot import SlackBot
 from .sql_tools import sql_protocol_utilities, sql_system_state, sql_wellplate
+from .syringepump import MockPump, SyringePump
 from .utilities import SystemState
-from .vials import (StockVial, Vial2, WasteVial,
-                    update_vial_state_files, read_vials)
+from .vials import (StockVial, Vial2, WasteVial, read_vials,
+                    update_vial_state_files)
 from .wellplate import Wellplate
 
 # set up slack globally so that it can be used in the main function and others

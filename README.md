@@ -20,10 +20,14 @@ To electrodeposit polymer thin films, evaluate and compare their electrical prop
 * [200 µl Pipette tips]()
   
 ## Designs
-* [Instrument Holder](https://cad.onshape.com/documents/c75fe6bc68ee2746309c067f/w/80942d9f5953df01d216df22/e/fce6103128a9bdf7b907dcd4)
-* [Tubing to Pipette Adaptor](https://github.com/erasmus95/PANDA-BEAR/blob/main/3d-prints/Adapter_v3_fine.stl)
+* [CAD Assembly "Digital Twin"](https://cad.onshape.com/documents/c41313cd3306bc04e4d59c9f/w/2192f79fbbc255217700cdef/e/4a090fa0f720a530b6f3fba8?renderMode=0&uiState=66779a09a4d5a25e8be8abcd)
+* [Instrument Holder AKA Paw](https://cad.onshape.com/documents/67d0973a1a964efb67f4fddf/w/915890a7f09783f856faa201/e/248cc503162b35b112007857)
+* [Tubing to Pipette Adaptor](https://cad.onshape.com/documents/41b826971f0a7ebeaf3c01ef/w/ae93b60499811617be29c11f/e/1e1bce50dcdec6ddd667460a)
 * [Substrate Holder](https://cad.onshape.com/documents/ccde1516ba2f6a9f288ba4a5/w/6078df451920f962c99dc5d0/e/e23eb57422b3a293c7468839)
 * [Vial tube rack](https://github.com/erasmus95/PANDA-BEAR/blob/main/3d-prints/TubeRack_2mLx10_v1_scaled.stl)
+* [Electrode Holder](https://cad.onshape.com/documents/31255eb25d54cb375f991e2f/w/9c80d5522b00c17bccc0de50/e/359a4f6324328a05abc88318)
+* [Pipette Holder](https://cad.onshape.com/documents/d1685a6b475ddad11dae0fd7/w/557c3cfdcf96c63526dea402/e/47effdbc24cc482a1a5af404)
+* [Lens Mount](https://cad.onshape.com/documents/984ac1a9247a6b18ef7def75/w/90783d749d7238bd36b77238/e/68e9ffba4d8f9efa5501c7b6)
 
 ## Software
 * [Python 3](https://www.python.org/)
@@ -32,6 +36,7 @@ To electrodeposit polymer thin films, evaluate and compare their electrical prop
 * [Silicon Labs CP210x_Universal_Windows_Driver](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads)
 * [FlyCapture SDK](https://www.flir.com/products/flycapture-sdk/)
 * [Open Broadcast Software](https://obsproject.com/)
+* [Python Slack SDK](https://slack.dev/python-slack-sdk/)
 
 
 ## Team

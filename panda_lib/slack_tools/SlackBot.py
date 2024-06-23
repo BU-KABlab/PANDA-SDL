@@ -156,7 +156,7 @@ class SlackBot:
     def send_slack_message(self, channel_id: str, message) -> None:
         """Send a message to Slack."""
         if os.environ["PANDA_SDL_USE_SLACK"] == "0":
-            return
+            print(message)
 
 
         client = WebClient(SlackCred.TOKEN)

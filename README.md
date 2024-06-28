@@ -7,7 +7,7 @@ To electrodeposit polymer thin films, evaluate and compare their electrical prop
 
 ## Instruments
 * [Genmitsu PROVerXL 4030 CNC Router](https://www.sainsmart.com/products/genmitsu-proverxl-4030-cnc-router-with-carveco-maker-subscription)
-* [WPI Aladin Syringe Pump - Model A-1000](https://www.wpiinc.com/var-al1000hp-aladdin-single-syringe-pump-high-pressure](https://www.wpiinc.com/var-2300-aladdin-single-syringe-pump.html)
+* [WPI Aladin Syringe Pump - Model A-1000](https://www.wpiinc.com/var-al1000hp-aladdin-single-syringe-pump-high-pressure)
 * [Gamry Potentiostat Interface 1010E](https://www.gamry.com/potentiostats/interface-1010e-potentiostat/)
 * [FLIR grasshopper3 USB](https://www.flir.com/products/grasshopper3-usb3/)
 * [Edmunds Optics 55mm Focal Length Partially Telecentric Video Lens](https://www.edmundoptics.com/p/55mm-focal-length-partially-telecentric-video-lens/10573/)

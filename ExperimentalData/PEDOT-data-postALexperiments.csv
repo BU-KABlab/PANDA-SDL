@@ -1,0 +1,12 @@
+﻿experiment_id,description,delta E00,"edot 
+concentration (M)",deposition potential (V),deposition time (s)
+10000912,Predicted Optimum,21.91487108,0.1,1.33,5.096
+10000911,Predicted Optimum,22.10464651,0.1,1.33,5.096
+10000910,Predicted Optimum,19.82496641,0.1,1.33,5.096
+10000909,Predicted Optimum,22.02320799,0.1,1.33,5.096
+10000908,Predicted Optimum,20.69524849,0.1,1.33,5.096
+10000907,Predicted Optimum,19.75413502,0.1,1.33,5.096
+10000906,Predicted Optimum,21.28766782,0.1,1.33,5.096
+10000897,Observed Max,21.41036124,0.1,1.305,5.762
+10000896,Observed Max,21.38193384,0.1,1.305,5.762
+10000895,Observed Max,22.30174061,0.1,1.305,5.762

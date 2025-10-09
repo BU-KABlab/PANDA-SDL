@@ -40,7 +40,7 @@ To electrodeposit polymer thin films, evaluate and compare their electrical prop
 
 
 ## Team
-* Harley Quinn
+* Dr. Harley Quinn
 * Gregory Robben
 * Zhaoyi Zhang
 * Alan Gardner
